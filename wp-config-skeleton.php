@@ -63,21 +63,11 @@ define( 'WP_DEBUG_DISPLAY', false );
 // define( 'SAVEQUERIES', true );
 // define( 'WP_DEBUG', true );
 
-// ======================================
-// Load a Memcached config if we have one
-// ======================================
-if ( file_exists( dirname( __FILE__ ) . '/memcached.php' ) )
-	$memcached_servers = include( dirname( __FILE__ ) . '/memcached.php' );
-
-// ===========================================================================================
-// This can be used to programatically set the stage when deploying (e.g. production, staging)
-// ===========================================================================================
-define( 'WP_STAGE', '%%WP_STAGE%%' );
-define( 'STAGING_DOMAIN', '%%WP_STAGING_DOMAIN%%' ); // Does magic in WP Stack to handle staging domain rewriting
-
 // ===================
 // Bootstrap WordPress
 // ===================
-if ( !defined( 'ABSPATH' ) )
+if ( !defined( 'ABSPATH' ) ) {
 	define( 'ABSPATH', dirname( __FILE__ ) . '/wp/' );
+}
+
 require_once( ABSPATH . 'wp-settings.php' );
