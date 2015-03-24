@@ -17,10 +17,10 @@ This tries to make the benefits of WordPress Skeleton available for a wider audi
 
 **This setup relies on having FTP, Database and SSH access and running the PHP commands to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) on your webserver.**
 
-If you don't have Git on your webserver, follow the 'No git and no composer setup' section below. There's a Media Temple guide at the bottom as that happens to be what I'm using.
+If you don't have Git on your webserver, follow the [No git and no composer setup](#no-git-and-no-composer-setup) section below. There's a [Media Temple installation guide](#media-temple-grid-service-installation) at the bottom as that happens to be what I'm using.
 
 ## Quick start
-Skip this section if you don't have git or composer installed.
+[Skip](#no-git-and-no-composer-setup) this section if you don't have git or composer installed.
 
 ```
 $ cd your/httpdocs/dir
@@ -104,7 +104,7 @@ $ cp wp-config-skeleton.php wp-config.php
 
 Edit `wp-config.php` with your database config and [salts](https://api.wordpress.org/secret-key/1.1/salt/).
 
-Follow the above 'WordPress database installation / configuration' and 'Create the shared uploads directory' sections above.
+Follow the above [WordPress database installation / configuration](#wordpress-database-installation--configuration) and [Create the shared uploads directory](#create-the-shared-uploads-directory) sections above.
 
 ### Future updates
 
@@ -155,7 +155,7 @@ define( 'DB_HOST', $_ENV['DATABASE_SERVER'] );
 
 Update the salts from [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/)
 
-Follow the above 'WordPress database installation / configuration' and 'Create the shared uploads directory' sections above.
+Follow the above [WordPress database installation / configuration](#wordpress-database-installation--configuration) and [Create the shared uploads directory](#create-the-shared-uploads-directory) sections above.
 
 ### Future updates
 
