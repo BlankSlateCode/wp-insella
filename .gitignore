@@ -8,3 +8,5 @@
 /wp
 /vendor
 /content/uploads/
+/composer.phar
+/content/languages/
