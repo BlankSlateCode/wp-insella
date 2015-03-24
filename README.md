@@ -22,7 +22,8 @@ If you don't have Git on your webserver, follow the 'No git and no composer setu
 ## Quick start
 Skip this section if you don't have git or composer installed.
 
-```$ cd your/httpdocs/dir
+```
+$ cd your/httpdocs/dir
 $ git clone https://github.com/ianchanning/WordPress-Insella .
 $ composer install
 $ cp wp-config-skeleton.php wp-config.php
@@ -41,7 +42,8 @@ Once WordPress is installed, go to *Settings | General* and change the **Site Ad
 
 WordPress Skeleton suggests that you should only use the 'shared' directory for uploads locally. Given that we're not using capistrano we'll keep the directory structure the same but just use the shared directory in production.
 
-```$ cd your/httpdocs/dir
+```
+$ cd your/httpdocs/dir
 $ mkdir shared
 $ mkdir shared/content
 $ mkdir shared/content/uploads
@@ -54,7 +56,8 @@ Make sure uploads directory is writable by your webserver.
 1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/WordPress-Insella
 2. On your site:
 
-```$ cd your/httpdocs/dir
+```
+$ cd your/httpdocs/dir
 $ git pull
 $ composer update
 ```
@@ -85,7 +88,8 @@ From the main [composer installation guide](https://getcomposer.org/doc/00-intro
 
 Log in via SSH.
 
-```$ cd your/httpdocs/dir
+```
+$ cd your/httpdocs/dir
 $ php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
 ```
 
@@ -93,7 +97,8 @@ This should populate the `wp` directory with all the WordPress files.
 
 ### Install and configure WordPress files
 
-```$ php -d allow_url_fopen=On composer.phar install
+```
+$ php -d allow_url_fopen=On composer.phar install
 $ cp wp-config-skeleton.php wp-config.php
 ```
 
@@ -124,7 +129,8 @@ Composer can't be installed globally so it has to be installed locally. Based of
 
 Login via SSH
 
-```$ cd domains/domain.com/html
+```
+$ cd domains/domain.com/html
 $ git clone https://github.com/ianchanning/WordPress-Insella
 $ curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
 $ php -d allow_url_fopen=On composer.phar install
@@ -134,12 +140,14 @@ This should populate the `wp` directory with all the WordPress files.
 
 ### Install and configure WordPress files
 
-```$ cp wp-config-skeleton.php wp-config.php
+```
+$ cp wp-config-skeleton.php wp-config.php
 ```
 
 Edit `wp-config.php` and change the database settings to (**N.B. the `DB_HOST` isn't localhost**):
 
-```define( 'DB_NAME', 'dbXXXXXX_[your domain]' );
+```
+define( 'DB_NAME', 'dbXXXXXX_[your domain]' );
 define( 'DB_USER', 'dbXXXXXX_[your domain]' );
 define( 'DB_PASSWORD', 'xkcd.com/936' );
 define( 'DB_HOST', $_ENV['DATABASE_SERVER'] );
@@ -154,7 +162,8 @@ Follow the above 'WordPress database installation / configuration' and 'Create t
 1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/WordPress-Insella
 2. On your site:
 
-```$ cd domains/domain.com/html
+```
+$ cd domains/domain.com/html
 $ git pull
 $ php -d allow_url_fopen=On composer.phar update
 ```
