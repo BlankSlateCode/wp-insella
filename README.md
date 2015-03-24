@@ -8,8 +8,8 @@ This tries to make the benefits of WordPress Skeleton available for a wider audi
 
 1. Composer in my view is easier to understand than learning about Git Submodules
 1. Composer should be able to install on hosts that don't have Git
-1. I agree with the idea that [Composer is a more appropriate tool to use than Git Submodules]((https://roots.io/using-composer-with-wordpress/))
-1. I've tried to simplify the Skeleton even more removing memcache and capistrano - if you're using those you're quite capable of forking this to include them
+1. I agree with the idea that [Composer is a more appropriate tool to use than Git Submodules](https://roots.io/using-composer-with-wordpress/)
+1. I've tried to simplify the Skeleton even more removing memcache, capistrano and WP-CLI - if you're using those you're quite capable of forking this to include them
 1. The directory structure remains compatible with WordPress Skeleton, so you should be able to mix in the extra WordPress Skeleton goodies when you get to them
 1. There's a separate `wp-config-skeleton.php` file so that you don't have to fork this repo which makes it easier to get WordPress updates
 1. It still encourages local development with the `local-config.php` file
