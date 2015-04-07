@@ -1,6 +1,18 @@
 {
-  "name": "ian",
-  "description": "Package to build insella.co.uk",
+  "name": "ianchanning/WordPress-Insella",
+  "description": "Composer version of WordPress-Skeleton",
+  "license": "GPL-3.0+",
+  "homepage": "https://github.com/ianchanning/WordPress-Insella",
+  "support": {
+    "issues": "https://github.com/ianchanning/WordPress-Insella/issues",
+    "source": "https://github.com/ianchanning/WordPress-Insella"
+  },
+  "authors": [
+    {
+      "name": "Ian Channing",
+      "email": "ian@ianchanning.com"
+    }
+  ],
   "repositories": [
     {
       "type": "package",
