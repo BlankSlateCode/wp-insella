@@ -1,21 +1,21 @@
-# WordPress Insella aka WordPress Composer Skeleton
+# WordPress in sella aka WordPress Composer Skeleton
 
 This is based on the structure of [WordPress Skeleton](https://github.com/markjaquith/WordPress-Skeleton) but replacing the Git Submodule dependency with [Composer](https://getcomposer.org/).
 
-Insella is Italian for 'in the saddle' and was initially used for <http://insella.co.uk>.
+In sella is Italian for 'in the saddle' and was initially used for <http://insella.co.uk>.
 
 This tries to make the benefits of WordPress Skeleton available for a wider audience:
 
+1. This readme should get you fully started with WordPress installed and uploads working
 1. Composer in my view is easier to understand than learning about Git Submodules
 1. Composer should be able to install on hosts that don't have Git
 1. I agree with the idea that [Composer is a more appropriate tool to use than Git Submodules](https://roots.io/using-composer-with-wordpress/)
-1. I've tried to simplify the Skeleton even more removing memcache, capistrano and WP-CLI - if you're using those you're quite capable of forking this to include them
 1. The directory structure remains compatible with WordPress Skeleton, so you should be able to mix in the extra WordPress Skeleton goodies when you get to them
 1. There's a separate `wp-config-skeleton.php` file so that you don't have to fork this repo which makes it easier to get WordPress updates
-1. It still encourages local development with the `local-config.php` file
-1. This readme should get you fully started with WordPress installed and uploads working
+1. This is a [Composer Package](https://packagist.org/packages/ianchanning/wordpress-insella) so instead of cloning you can call `composer create-project ianchanning/wordpress-insella .` in your httpdocs directory
+1. It still encourages local development with the `local-config.php` file and allows all the other great stuff you can do with WordPress-Skeleton
 
-**This setup relies on having FTP, Database and SSH access and running the PHP commands to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) on your webserver.**
+**This setup relies on having SSH access and running the PHP commands to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) on your webserver.**
 
 If you don't have Git on your webserver, follow the [No git and no composer setup](#no-git-and-no-composer-setup) section below. There's a [Media Temple installation guide](#media-temple-grid-service-installation) at the bottom as that happens to be what I'm using.
 
@@ -24,7 +24,7 @@ If you don't have Git on your webserver, follow the [No git and no composer setu
 
 ```
 $ cd your/httpdocs/dir
-$ git clone https://github.com/ianchanning/WordPress-Insella .
+$ git clone https://github.com/ianchanning/wordpress-insella .
 $ composer install
 $ cp wp-config-skeleton.php wp-config.php
 ```
@@ -36,7 +36,7 @@ Then go to [http://www.domain.com/wp/wp-admin/](http://www.domain.com/wp/wp-admi
 
 Once WordPress is installed, go to *Settings | General* and change the **Site Address (URL)** to [http://www.domain.com](http://www.domain.com)
 
-![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/WordPress-Insella/site_address.png)
+![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/wordpress-insella/site_address.png)
 
 ### Create the shared uploads directory
 
@@ -53,7 +53,7 @@ Make sure uploads directory is writable by your webserver.
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/WordPress-Insella
+1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
 2. On your site:
 
 ```
@@ -75,13 +75,6 @@ Using your hosting admin:
 3. Give the database read and write access on the database
 4. Have the details handy
 
-### Upload the files
-
-1. Download [https://github.com/ianchanning/WordPress-Insella/archive/master.zip](https://github.com/ianchanning/WordPress-Insella/archive/master.zip)
-2. Unzip it
-3. FTP the **contents** of `WordPress-Insella-master` to the root of your webserver httpdocs directory
-4. You should now have a `composer.json` file in the root in your httpdocs directory (along with the other files)
-
 ### Install composer
 
 From the main [composer installation guide](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), I'm going to assume that you probably don't have the rights to install it globally so we'll install it locally. N.B. the `-d allow_url_fopen=On` which is to modify one of the php.ini settings which may be turned off by your host (e.g. Media Temple)
@@ -93,14 +86,14 @@ $ cd your/httpdocs/dir
 $ php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
 ```
 
-This should populate the `wp` directory with all the WordPress files.
-
 ### Install and configure WordPress files
 
 ```
-$ php -d allow_url_fopen=On composer.phar install
+$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella .
 $ cp wp-config-skeleton.php wp-config.php
 ```
+
+This should populate the `wp` directory with all the WordPress files.
 
 Edit `wp-config.php` with your database config and [salts](https://api.wordpress.org/secret-key/1.1/salt/).
 
@@ -108,8 +101,8 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to <https://github.com/ianchanning/WordPress-Insella>
-1. Download <https://raw.githubusercontent.com/ianchanning/WordPress-Insella/master/composer.json>
+1. I'll update, commit and push the `composer.json` file to <https://github.com/ianchanning/wordpress-insella>
+1. Download <https://raw.githubusercontent.com/ianchanning/wordpress-insella/master/composer.json>
 1. FTP it to your httpdocs directory and overwrite the `composer.json`
 1. Run `php -d allow_url_fopen=On composer.phar update`
 
@@ -131,18 +124,17 @@ Login via SSH
 
 ```
 $ cd domains/domain.com/html
-$ git clone https://github.com/ianchanning/WordPress-Insella
 $ curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
-$ php -d allow_url_fopen=On composer.phar install
+$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella .
 ```
-
-This should populate the `wp` directory with all the WordPress files.
 
 ### Install and configure WordPress files
 
 ```
 $ cp wp-config-skeleton.php wp-config.php
 ```
+
+This should populate the `wp` directory with all the WordPress files.
 
 Edit `wp-config.php` and change the database settings to (**N.B. the `DB_HOST` isn't localhost**):
 
@@ -159,7 +151,7 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/WordPress-Insella
+1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
 2. On your site:
 
 ```
