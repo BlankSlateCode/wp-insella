@@ -79,21 +79,22 @@ Using your hosting admin:
 
 From the main [composer installation guide](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), I'm going to assume that you probably don't have the rights to install it globally so we'll install it locally. N.B. the `-d allow_url_fopen=On` which is to modify one of the php.ini settings which may be turned off by your host (e.g. Media Temple)
 
-Log in via SSH.
+Log in via SSH. Install composer in the `httpdocs` parent directory and `httpdocs` must be empty.
 
 ```
 $ cd your/httpdocs/dir
+$ cd ..
 $ php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
 ```
 
 ### Install and configure WordPress files
 
 ```
-$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella .
+$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella [httpdocs]
 $ cp wp-config-skeleton.php wp-config.php
 ```
 
-This should populate the `wp` directory with all the WordPress files.
+This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
 
 Edit `wp-config.php` with your database config and [salts](https://api.wordpress.org/secret-key/1.1/salt/).
 
@@ -120,21 +121,22 @@ In [media temple admin](https://ac.mediatemple.net/home.mt) go to :
 
 Composer can't be installed globally so it has to be installed locally. Based off [this guide](http://www.neontsunami.com/posts/installing-composer-and-laravel-4-on-media-temple-%28gs%29):
 
-Login via SSH
+Login via SSH, this assumes that your `html` directory is empty. You will get warnings when you install comopser, but it should still install correctly.
 
 ```
-$ cd domains/domain.com/html
+$ cd domains/domain.com
 $ curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
-$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella .
+$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella html
 ```
+
+This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
 
 ### Install and configure WordPress files
 
 ```
+$ cd html
 $ cp wp-config-skeleton.php wp-config.php
 ```
-
-This should populate the `wp` directory with all the WordPress files.
 
 Edit `wp-config.php` and change the database settings to (**N.B. the `DB_HOST` isn't localhost**):
 
