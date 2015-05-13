@@ -44,9 +44,7 @@ WordPress Skeleton suggests that you should only use the 'shared' directory for 
 
 ```shell
 cd your/httpdocs/dir
-mkdir shared
-mkdir shared/content
-mkdir shared/content/uploads
+mkdir -p shared/content/uploads
 ```
 
 Make sure uploads directory is writable by your webserver.
