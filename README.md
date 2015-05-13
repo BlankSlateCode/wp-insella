@@ -32,9 +32,9 @@ Create your database and edit `wp-config.php` with your database config and salt
 
 ### WordPress database installation / configuration
 
-Then go to [http://www.domain.com/wp/wp-admin/](http://www.domain.com/wp/wp-admin/) - beware of going directly to [www.domain.com](http://www.domain.com) as it will try going to [http://www.domain.com/wp-admin](http://www.domain.com/wp-admin) which misses out the `wp` directory and ends up in an infinite redirect.
+Then go to [http://www.example.com/wp/wp-admin/](http://www.example.com/wp/wp-admin/) - beware of going directly to [www.example.com](http://www.example.com) as it will try going to [http://www.example.com/wp-admin](http://www.example.com/wp-admin) which misses out the `wp` directory and ends up in an infinite redirect.
 
-Once WordPress is installed, go to *Settings | General* and change the **Site Address (URL)** to [http://www.domain.com](http://www.domain.com)
+Once WordPress is installed, go to *Settings | General* and change the **Site Address (URL)** to [http://www.example.com](http://www.example.com)
 
 ![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/wordpress-insella/site_address.png)
 
@@ -117,16 +117,15 @@ In [media temple admin](https://ac.mediatemple.net/home.mt) go to :
 2. Create a database user
 3. Give the user permission on the database
 
-### Install composer and Insella
+### Install composer
 
 Composer can't be installed globally so it has to be installed locally. Based off [this guide](http://www.neontsunami.com/posts/installing-composer-and-laravel-4-on-media-temple-%28gs%29):
 
 Login via SSH, this assumes that your `html` directory is empty. You will get warnings when you install comopser, but it should still install correctly.
 
 ```shell
-cd domains/domain.com
+cd domains/example.com
 curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
-php -d allow_url_fopen=On composer.phar create-project --prefer-source --keep-vcs ianchanning/wordpress-insella html
 ```
 
 This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
@@ -135,6 +134,8 @@ This should set up the entire WordPress Skeleton installation and the `wp` direc
 
 ```shell
 cd html
+git clone https://github.com/ianchanning/wordpress-insella .
+php -d allow_url_fopen=On ../composer.phar install
 cp wp-config-skeleton.php wp-config.php
 ```
 
@@ -157,7 +158,7 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 2. On your site:
 
 ```shell
-cd domains/domain.com/html
+cd domains/example.com/html
 git pull
 php -d allow_url_fopen=On ../composer.phar update
 ```
