@@ -22,11 +22,11 @@ If you don't have Git on your webserver, follow the [No git and no composer setu
 ## Quick start
 [Skip](#no-git-and-no-composer-setup) this section if you don't have git or composer installed.
 
-```
-$ cd your/httpdocs/dir
-$ git clone https://github.com/ianchanning/wordpress-insella .
-$ composer install
-$ cp wp-config-skeleton.php wp-config.php
+```shell
+cd your/httpdocs/dir
+git clone https://github.com/ianchanning/wordpress-insella .
+composer install
+cp wp-config-skeleton.php wp-config.php
 ```
 Create your database and edit `wp-config.php` with your database config and salts.
 
@@ -42,11 +42,11 @@ Once WordPress is installed, go to *Settings | General* and change the **Site Ad
 
 WordPress Skeleton suggests that you should only use the 'shared' directory for uploads locally. Given that we're not using capistrano we'll keep the directory structure the same but just use the shared directory in production.
 
-```
-$ cd your/httpdocs/dir
-$ mkdir shared
-$ mkdir shared/content
-$ mkdir shared/content/uploads
+```shell
+cd your/httpdocs/dir
+mkdir shared
+mkdir shared/content
+mkdir shared/content/uploads
 ```
 
 Make sure uploads directory is writable by your webserver.
@@ -56,10 +56,10 @@ Make sure uploads directory is writable by your webserver.
 1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
 2. On your site:
 
-```
-$ cd your/httpdocs/dir
-$ git pull
-$ composer update
+```shell
+cd your/httpdocs/dir
+git pull
+composer update
 ```
 
 ## No git and no composer setup
@@ -79,19 +79,19 @@ Using your hosting admin:
 
 From the main [composer installation guide](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), I'm going to assume that you probably don't have the rights to install it globally so we'll install it locally. N.B. the `-d allow_url_fopen=On` which is to modify one of the php.ini settings which may be turned off by your host (e.g. Media Temple)
 
-Log in via SSH. Install composer in the `httpdocs` parent directory and `httpdocs` must be empty.
+Log in via SSH. Install composer in the `httpdocs` **parent** directory and `httpdocs` must be empty.
 
-```
-$ cd your/httpdocs/dir
-$ cd ..
-$ php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
+```shell
+cd your/httpdocs/dir
+cd ..
+php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
 ```
 
 ### Install and configure WordPress files
 
-```
-$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella [httpdocs]
-$ cp wp-config-skeleton.php wp-config.php
+```shell
+php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella [httpdocs]
+cp wp-config-skeleton.php wp-config.php
 ```
 
 This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
@@ -105,7 +105,7 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 1. I'll update, commit and push the `composer.json` file to <https://github.com/ianchanning/wordpress-insella>
 1. Download <https://raw.githubusercontent.com/ianchanning/wordpress-insella/master/composer.json>
 1. FTP it to your httpdocs directory and overwrite the `composer.json`
-1. Run `php -d allow_url_fopen=On composer.phar update`
+1. Run `php -d allow_url_fopen=On ../composer.phar update`
 
 ## Media Temple (Grid Service) installation
 
@@ -123,31 +123,31 @@ Composer can't be installed globally so it has to be installed locally. Based of
 
 Login via SSH, this assumes that your `html` directory is empty. You will get warnings when you install comopser, but it should still install correctly.
 
-```
-$ cd domains/domain.com
-$ curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
-$ php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella html
+```shell
+cd domains/domain.com
+curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
+php -d allow_url_fopen=On composer.phar create-project --prefer-source --keep-vcs ianchanning/wordpress-insella html
 ```
 
 This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
 
 ### Install and configure WordPress files
 
-```
-$ cd html
-$ cp wp-config-skeleton.php wp-config.php
+```shell
+cd html
+cp wp-config-skeleton.php wp-config.php
 ```
 
 Edit `wp-config.php` and change the database settings to (**N.B. the `DB_HOST` isn't localhost**):
 
-```
+```php
 define( 'DB_NAME', 'dbXXXXXX_[your domain]' );
 define( 'DB_USER', 'dbXXXXXX_[your domain]' );
 define( 'DB_PASSWORD', 'xkcd.com/936' );
 define( 'DB_HOST', $_ENV['DATABASE_SERVER'] );
 ```
 
-Update the salts from [https://api.wordpress.org/secret-key/1.1/salt/](https://api.wordpress.org/secret-key/1.1/salt/)
+Update the [salts](https://api.wordpress.org/secret-key/1.1/salt/).
 
 Follow the above [WordPress database installation / configuration](#wordpress-database-installation--configuration) and [Create the shared uploads directory](#create-the-shared-uploads-directory) sections above.
 
@@ -156,8 +156,8 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
 2. On your site:
 
-```
-$ cd domains/domain.com/html
-$ git pull
-$ php -d allow_url_fopen=On composer.phar update
+```shell
+cd domains/domain.com/html
+git pull
+php -d allow_url_fopen=On ../composer.phar update
 ```
