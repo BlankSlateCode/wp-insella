@@ -126,8 +126,6 @@ cd domains/example.com
 curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
 ```
 
-This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
-
 ### Install and configure WordPress files
 
 ```shell
@@ -136,6 +134,8 @@ git clone https://github.com/ianchanning/wordpress-insella .
 php -d allow_url_fopen=On ../composer.phar install
 cp wp-config-skeleton.php wp-config.php
 ```
+
+This should set up the entire WordPress Skeleton installation and the `wp` directory with all the WordPress files.
 
 Edit `wp-config.php` and change the database settings to (**N.B. the `DB_HOST` isn't localhost**):
 
