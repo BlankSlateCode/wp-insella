@@ -1,11 +1,11 @@
 {
-  "name": "ianchanning/wordpress-insella",
+  "name": "ianchanning/wp-insella",
   "description": "Composer version of WordPress-Skeleton",
   "license": "GPL-3.0+",
-  "homepage": "https://github.com/ianchanning/wordpress-insella",
+  "homepage": "https://github.com/ianchanning/wp-insella",
   "support": {
-    "issues": "https://github.com/ianchanning/wordpress-insella/issues",
-    "source": "https://github.com/ianchanning/wordpress-insella"
+    "issues": "https://github.com/ianchanning/wp-insella/issues",
+    "source": "https://github.com/ianchanning/wp-insella"
   },
   "authors": [
     {
