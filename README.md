@@ -12,7 +12,7 @@ This tries to make the benefits of WordPress Skeleton available for a wider audi
 1. I agree with the idea that [Composer is a more appropriate tool to use than Git Submodules](https://roots.io/using-composer-with-wordpress/)
 1. The directory structure remains compatible with WordPress Skeleton, so you should be able to mix in the extra WordPress Skeleton goodies when you get to them
 1. There's a separate `wp-config-skeleton.php` file so that you don't have to fork this repo which makes it easier to get WordPress updates
-1. This is a [Composer Package](https://packagist.org/packages/ianchanning/wordpress-insella) so instead of cloning you can call `composer create-project ianchanning/wordpress-insella .` in your httpdocs directory
+1. This is a [Composer Package](https://packagist.org/packages/ianchanning/wp-insella) so instead of cloning you can call `composer create-project ianchanning/wp-insella .` in your httpdocs directory
 1. It still encourages local development with the `local-config.php` file and allows all the other great stuff you can do with WordPress-Skeleton
 
 **This setup relies on having SSH access and running the PHP commands to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx) on your webserver.**
@@ -24,7 +24,7 @@ If you don't have Git on your webserver, follow the [No git and no composer setu
 
 ```shell
 cd your/httpdocs/dir
-git clone https://github.com/ianchanning/wordpress-insella .
+git clone https://github.com/ianchanning/wp-insella .
 composer install
 cp wp-config-skeleton.php wp-config.php
 ```
@@ -36,7 +36,7 @@ Then go to [http://www.example.com/wp/wp-admin/](http://www.example.com/wp/wp-ad
 
 Once WordPress is installed, go to *Settings | General* and change the **Site Address (URL)** to [http://www.example.com](http://www.example.com)
 
-![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/wordpress-insella/site_address.png)
+![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/wp-insella/site_address.png)
 
 ### Create the shared uploads directory
 
@@ -51,7 +51,7 @@ Make sure uploads directory is writable by your webserver.
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
+1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wp-insella
 2. On your site:
 
 ```shell
@@ -88,7 +88,7 @@ php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen
 ### Install and configure WordPress files
 
 ```shell
-php -d allow_url_fopen=On composer.phar create-project ianchanning/wordpress-insella [httpdocs]
+php -d allow_url_fopen=On composer.phar create-project ianchanning/wp-insella [httpdocs]
 cp wp-config-skeleton.php wp-config.php
 ```
 
@@ -100,8 +100,8 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to <https://github.com/ianchanning/wordpress-insella>
-1. Download <https://raw.githubusercontent.com/ianchanning/wordpress-insella/master/composer.json>
+1. I'll update, commit and push the `composer.json` file to <https://github.com/ianchanning/wp-insella>
+1. Download <https://raw.githubusercontent.com/ianchanning/wp-insella/master/composer.json>
 1. FTP it to your httpdocs directory and overwrite the `composer.json`
 1. Run `php -d allow_url_fopen=On ../composer.phar update`
 
@@ -130,7 +130,7 @@ curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
 
 ```shell
 cd html
-git clone https://github.com/ianchanning/wordpress-insella .
+git clone https://github.com/ianchanning/wp-insella .
 php -d allow_url_fopen=On ../composer.phar install
 cp wp-config-skeleton.php wp-config.php
 ```
@@ -152,7 +152,7 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 
 ### Future updates
 
-1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wordpress-insella
+1. I'll update, commit and push the `composer.json` file to https://github.com/ianchanning/wp-insella
 2. On your site:
 
 ```shell
