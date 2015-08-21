@@ -1,6 +1,6 @@
-# WordPress in sella aka WordPress Composer Skeleton
+# WP in-sella
 
-This is based on the structure of [WordPress Skeleton](https://github.com/markjaquith/WordPress-Skeleton) but replacing the Git Submodule dependency with [Composer](https://getcomposer.org/).
+Based on [WordPress Skeleton](https://github.com/markjaquith/WordPress-Skeleton) but replacing Git Submodules with [Composer](https://getcomposer.org/).
 
 In sella is Italian for 'in the saddle' and was initially used for <http://insella.co.uk>.
 
@@ -28,9 +28,10 @@ git clone https://github.com/ianchanning/wp-insella .
 composer install
 cp wp-config-skeleton.php wp-config.php
 ```
+
 Create your database and edit `wp-config.php` with your database config and salts.
 
-### WordPress database installation / configuration
+### Configuration
 
 Then go to [http://www.example.com/wp/wp-admin/](http://www.example.com/wp/wp-admin/) - beware of going directly to [www.example.com](http://www.example.com) as it will try going to [http://www.example.com/wp-admin](http://www.example.com/wp-admin) which misses out the `wp` directory and ends up in an infinite redirect.
 
@@ -38,7 +39,7 @@ Once WordPress is installed, go to *Settings | General* and change the **Site Ad
 
 ![Site Address (URL) example](https://dl.dropboxusercontent.com/u/7765571/github/wp-insella/site_address.png)
 
-### Create the shared uploads directory
+### Uploads
 
 WordPress Skeleton suggests that you should only use the 'shared' directory for uploads locally. Given that we're not using capistrano we'll keep the directory structure the same but just use the shared directory in production.
 
@@ -64,7 +65,7 @@ composer update
 
 This is assuming that you have the most basic web host that doesn't allow anything except SSH / PHP / MySQL.
 
-### Create your database
+### Database
 
 Using your hosting admin:
 
@@ -73,7 +74,7 @@ Using your hosting admin:
 3. Give the database read and write access on the database
 4. Have the details handy
 
-### Install composer
+### Composer
 
 From the main [composer installation guide](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx), I'm going to assume that you probably don't have the rights to install it globally so we'll install it locally. N.B. the `-d allow_url_fopen=On` which is to modify one of the php.ini settings which may be turned off by your host (e.g. Media Temple)
 
@@ -85,7 +86,7 @@ cd ..
 php -r "readfile('https://getcomposer.org/installer');" | php -d allow_url_fopen=On
 ```
 
-### Install and configure WordPress files
+### WordPress
 
 ```shell
 php -d allow_url_fopen=On composer.phar create-project ianchanning/wp-insella [httpdocs]
@@ -107,15 +108,15 @@ Follow the above [WordPress database installation / configuration](#wordpress-da
 
 ## Media Temple (Grid Service) installation
 
-### Create your database
+### Database
 
-In [media temple admin](https://ac.mediatemple.net/home.mt) go to :
+In [media temple admin](https://ac.mediatemple.net/home.mt) go to:
 
 1. Create a database
 2. Create a database user
 3. Give the user permission on the database
 
-### Install composer
+### Composer
 
 Composer can't be installed globally so it has to be installed locally. Based off [this guide](http://www.neontsunami.com/posts/installing-composer-and-laravel-4-on-media-temple-%28gs%29):
 
@@ -126,7 +127,7 @@ cd domains/example.com
 curl -sS https://getcomposer.org/installer | php -d allow_url_fopen=On
 ```
 
-### Install and configure WordPress files
+### WordPress
 
 ```shell
 cd html
