@@ -11,3 +11,4 @@
 /composer.phar
 /content/languages/
 /composer.lock
+/.session.vim
